@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 
 const technologies = [
   "Next.js",
@@ -12,29 +12,42 @@ const technologies = [
   "Framer Motion"
 ];
 
-const item = {
-  hidden: { opacity: 0, y: 10 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  show: { opacity: 1, transition: { staggerChildren: 0.05 } }
+}
+
+const item: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  show: { opacity: 1, scale: 1, transition: { type: "spring", stiffness: 200, damping: 15 } },
 };
 
 export default function TechStack() {
   return (
-    <motion.div variants={item} className="w-full max-w-3xl border-t border-gray-100 pt-10 pb-20 mx-auto text-center">
-      <p className="text-xs text-gray-400 font-medium mb-8 uppercase tracking-widest">
+    <div className="w-full max-w-4xl pt-10 pb-24 mx-auto text-center">
+      <h3 className="text-sm text-blue-600 font-bold uppercase tracking-[0.2em] mb-10 bg-blue-50 px-4 py-1.5 rounded-full border border-blue-100 shadow-sm inline-block">
         Tech Stack
-      </p>
+      </h3>
       
       {/* Flex container - zarovná tagy přirozeně vedle sebe */}
-      <div className="flex flex-wrap justify-center gap-3">
+      <motion.div 
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ margin: "-50px", once: true }}
+        className="flex flex-wrap justify-center gap-4"
+      >
         {technologies.map((tech) => (
-          <span 
-            key={tech} 
-            className="px-4 py-2 rounded-md border border-gray-200 bg-white text-sm text-gray-600 font-medium transition-all duration-300 hover:border-gray-900 hover:text-gray-900 cursor-default"
+          <motion.div 
+            key={tech}
+            variants={item}
+            whileHover={{ y: -5, scale: 1.05 }}
+            className="px-6 py-3 rounded-xl glass-panel text-[15px] text-gray-700 font-semibold cursor-default hover:text-gray-900 transition-colors"
           >
             {tech}
-          </span>
+          </motion.div>
         ))}
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 }

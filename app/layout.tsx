@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="cs" className="scroll-smooth">
+    <html lang="cs">
       {/* PŘIDÁNO: overflow-x-hidden a w-full */}
       <body className={`${inter.className} bg-white text-gray-900 antialiased w-full overflow-x-hidden`}>
         <SmoothScroll />

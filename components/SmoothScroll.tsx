@@ -9,6 +9,9 @@ export default function SmoothScroll() {
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Easing funkce
     });
 
+    // @ts-ignore - expose to window for Navbar interception
+    window.lenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -17,6 +20,8 @@ export default function SmoothScroll() {
     requestAnimationFrame(raf);
 
     return () => {
+      // @ts-ignore
+      delete window.lenis;
       lenis.destroy();
     };
   }, []);
