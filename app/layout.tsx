@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
-import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgress from "@/components/ScrollProgress";
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
+  variable: "--font-dm-sans",
+});
 
 export const metadata: Metadata = {
-  title: "Vorel | Fullstack Developer",
-  description: "Portfolio a ukázky práce.",
+  title: "Petr Vorlíček — Fullstack Developer",
+  description: "Portfolio fullstack vývojáře zaměřeného na čistý kód, rychlý výkon a minimalistický design.",
 };
 
 export default function RootLayout({
@@ -18,15 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="cs">
-      {/* PŘIDÁNO: overflow-x-hidden a w-full */}
-      <body className={`${inter.className} bg-white text-gray-900 antialiased w-full overflow-x-hidden`}>
-        <SmoothScroll />
+    <html lang="cs" className={dmSans.variable}>
+      <body className={`${dmSans.className} bg-white text-black antialiased w-full overflow-x-hidden`}>
         <ScrollProgress />
         <Navbar />
-        <main className="w-full">
-            {children}
-        </main>
+        {children}
       </body>
     </html>
   );

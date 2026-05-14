@@ -4,7 +4,6 @@ import { motion, useScroll, useSpring } from "framer-motion";
 export default function ScrollProgress() {
   const { scrollYProgress } = useScroll();
   
-  // Spring zajistí, že ta linka nebude skákat, ale bude dobíhat plynule (fyzika)
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
@@ -13,7 +12,7 @@ export default function ScrollProgress() {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 right-0 h-1 bg-blue-600 origin-left z-[100]"
+      className="fixed top-0 left-0 right-0 h-[1px] bg-black origin-left z-[100]"
       style={{ scaleX }}
     />
   );
