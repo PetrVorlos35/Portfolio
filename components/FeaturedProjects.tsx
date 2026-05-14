@@ -13,6 +13,7 @@ const projects = [
     description: "Komplexní nástroj pro plánování cest s interaktivními mapami a sdílenými itineráři.",
     techs: ["Vite.js", "JavaScript", "TailwindCSS", "MariaDB"],
     link: "https://github.com/PetrVorlos35/Journeov2",
+    live: "https://journeo.vorlos.eu",
   },
   {
     num: "02",
@@ -68,10 +69,9 @@ export default function FeaturedProjects() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
           >
-            <Link
-              href={project.link}
-              target="_blank"
-              className="flex flex-col md:flex-row md:items-center justify-between py-10 gap-4 group"
+            <div
+              onClick={() => window.open(project.link, "_blank")}
+              className="flex flex-col md:flex-row md:items-center justify-between py-10 gap-4 group cursor-pointer"
             >
               {/* Left */}
               <div className="flex items-start md:items-center gap-6 md:gap-10">
@@ -95,13 +95,24 @@ export default function FeaturedProjects() {
                     </span>
                   ))}
                 </div>
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={(e) => e.stopPropagation()}
+                    className="text-[10px] uppercase tracking-widest text-black/40 hover:text-black transition-colors flex items-center gap-1 border border-black/10 px-2 py-0.5 rounded-full"
+                  >
+                    Live <ArrowIcon size={10} />
+                  </a>
+                )}
                 <span className="text-xs text-gray-400 font-mono shrink-0">{project.category}</span>
                 <span className="text-xs text-gray-300 font-mono shrink-0">{project.year}</span>
                 <span className="text-gray-300 group-hover:text-black group-hover:translate-x-1 transition-all duration-300 shrink-0">
                   <ArrowIcon />
                 </span>
               </div>
-            </Link>
+            </div>
           </motion.div>
         ))}
       </div>
