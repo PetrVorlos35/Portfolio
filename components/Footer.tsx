@@ -1,3 +1,5 @@
+import { ArrowIcon } from "./Icons";
+
 export default function Footer() {
   return (
     <footer className="max-w-6xl mx-auto px-6 md:px-10 py-10 border-t border-gray-100">
@@ -7,8 +9,12 @@ export default function Footer() {
             © {new Date().getFullYear()} Petr Vorlíček
             </p>
             <div className="flex gap-4">
-                <a href="https://github.com/PetrVorlos35" target="_blank" className="text-[10px] uppercase tracking-widest text-gray-300 hover:text-black transition-colors">GitHub</a>
-                <a href="https://instagram.com/petr.vorel35" target="_blank" className="text-[10px] uppercase tracking-widest text-gray-300 hover:text-black transition-colors">Instagram</a>
+                <a href="https://github.com/PetrVorlos35" target="_blank" className="text-[10px] uppercase tracking-widest text-gray-300 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap">
+                  GitHub <ArrowIcon size={10} className="shrink-0" />
+                </a>
+                <a href="https://instagram.com/petr.vorel35" target="_blank" className="text-[10px] uppercase tracking-widest text-gray-300 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap">
+                  Instagram <ArrowIcon size={10} className="shrink-0" />
+                </a>
             </div>
         </div>
         <p className="text-xs text-gray-300">

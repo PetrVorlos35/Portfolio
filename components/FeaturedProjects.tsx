@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
+import { ArrowIcon } from "./Icons";
 
 const projects = [
   {
@@ -15,6 +16,15 @@ const projects = [
   },
   {
     num: "02",
+    title: "Minimalist Portfolio",
+    category: "Web / Design",
+    year: "2026",
+    description: "Redesign osobního portfolia se zaměřením na čistou typografii a vysoký výkon.",
+    techs: ["Next.js", "TailwindCSS", "Framer Motion"],
+    link: "https://github.com/PetrVorlos35/Portfolio",
+  },
+  {
+    num: "03",
     title: "Journeo",
     category: "Fullstack App",
     year: "2025",
@@ -23,7 +33,7 @@ const projects = [
     link: "https://github.com/PetrVorlos35/Journeo",
   },
   {
-    num: "03",
+    num: "04",
     title: "NBA Guessing Game",
     category: "Game / Web App",
     year: "2023",
@@ -87,7 +97,9 @@ export default function FeaturedProjects() {
                 </div>
                 <span className="text-xs text-gray-400 font-mono shrink-0">{project.category}</span>
                 <span className="text-xs text-gray-300 font-mono shrink-0">{project.year}</span>
-                <span className="text-gray-300 group-hover:text-black group-hover:translate-x-1 transition-all duration-300 shrink-0">↗</span>
+                <span className="text-gray-300 group-hover:text-black group-hover:translate-x-1 transition-all duration-300 shrink-0">
+                  <ArrowIcon />
+                </span>
               </div>
             </Link>
           </motion.div>

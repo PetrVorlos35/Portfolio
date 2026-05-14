@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowIcon } from "./Icons";
 
 const EMAIL = "petrvorlicek97@gmail.com";
 
@@ -63,32 +64,32 @@ export default function Contact() {
         </div>
 
         {/* Social links */}
-        <div className="flex gap-8 mt-16">
+        <div className="flex flex-wrap gap-8 mt-16">
           <a
             href="https://github.com/PetrVorlos35"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-gray-400 hover:text-black transition-colors link-hover"
+            className="text-sm text-gray-400 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap"
           >
-            GitHub ↗
+            GitHub <ArrowIcon size={12} className="shrink-0" />
           </a>
           <a
             href="https://linkedin.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-gray-400 hover:text-black transition-colors link-hover"
+            className="text-sm text-gray-400 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap"
           >
-            LinkedIn ↗
+            LinkedIn <ArrowIcon size={12} className="shrink-0" />
           </a>
           <a
             href="https://instagram.com/petr.vorel35"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm text-gray-400 hover:text-black transition-colors link-hover"
+            className="text-sm text-gray-400 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap"
           >
-            Instagram ↗
+            Instagram <ArrowIcon size={12} className="shrink-0" />
           </a>
-          <span className="text-sm text-gray-300">Praha · Ústí n. L.</span>
+          <span className="text-sm text-gray-300 whitespace-nowrap">Praha · Ústí n. L.</span>
         </div>
       </motion.div>
     </section>

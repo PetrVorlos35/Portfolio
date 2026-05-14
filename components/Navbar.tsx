@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { ArrowIcon } from "./Icons";
 
 const navItems = [
   { name: "Projekty", path: "/#projects" },
@@ -68,9 +69,9 @@ export default function Navbar() {
               href="https://github.com/PetrVorlos35"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200"
+              className="text-sm bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition-colors duration-200 flex items-center gap-1.5"
             >
-              GitHub ↗
+              GitHub <ArrowIcon size={14} />
             </a>
           </nav>
 
