@@ -118,9 +118,9 @@ export default function Navbar() {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: navItems.length * 0.06 }}
-                className="text-2xl font-light text-gray-400"
+                className="text-2xl font-light text-gray-400 flex items-center gap-1.5"
               >
-                GitHub ↗
+                GitHub <ArrowIcon size={14} className="shrink-0"/>
               </motion.a>
             </div>
           </motion.div>
