@@ -7,32 +7,29 @@ const timeline = [
     num: "01",
     period: "2025 — Nyní",
     title: "VŠE Praha",
-    sub: "Aplikovaná informatika · FIS",
+    sub: "Fakulta informatiky a statistiky",
   },
   {
     num: "02",
-    period: "2024",
-    title: "Journeo",
-    sub: "Maturitní projekt · Next.js, PostgreSQL",
+    period: "2021 — 2025",
+    title: "SPŠ Ústí nad Labem",
+    sub: "Informační technologie · Maturita",
   },
   {
     num: "03",
-    period: "2023",
-    title: "NBA Guessing Game",
-    sub: "Ročníkový projekt · React, REST API",
-  },
-  {
-    num: "04",
-    period: "2021 — 2025",
-    title: "SPŠ Ústí nad Labem",
-    sub: "Informační technologie",
+    period: "2020",
+    title: "Začátky v kódu",
+    sub: "První setkání s webovými technologiemi",
   },
 ];
 
 const skills = [
-  "Next.js", "Vite.js", "React", "JavaScript", "TypeScript", "Node.js", "HTML", "CSS",
-  "PostgreSQL", "MariaDB", "Tailwind CSS", "Framer Motion", "Git"
+  { label: "Frontend", items: ["Next.js", "Vite.js", "React", "JavaScript", "TypeScript", "Tailwind CSS", "Framer Motion"] },
+  { label: "Backend", items: ["Node.js", "PostgreSQL", "MariaDB", "REST API"] },
+  { label: "Nástroje", items: ["Git", "Vercel", "Figma", "VS Code"] }
 ];
+
+
 
 export default function About() {
   return (
@@ -40,7 +37,7 @@ export default function About() {
       <div className="divider mb-20" />
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-16 md:gap-24">
-        {/* LEFT: Bio */}
+        {/* LEFT: Bio & Principles */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -53,19 +50,26 @@ export default function About() {
             Jsem fullstack vývojář z Ústí nad Labem, aktuálně studující na VŠE v Praze. 
             Specializuji se na tvorbu rychlých, čistých a přístupných webových aplikací.
           </p>
-          <p className="text-gray-500 leading-relaxed text-base">
+          <p className="text-gray-500 leading-relaxed text-base mb-12">
             Kladu důraz na detail — od správné architektury kódu přes výkon až po vizuální dojem. 
             Věřím, že dobrý software musí být zároveň dobrý produkt.
           </p>
 
           {/* Skills */}
-          <div className="mt-12">
-            <p className="text-xs text-gray-400 uppercase tracking-widest mb-5">Technologie</p>
-            <div className="flex flex-wrap gap-2">
-              {skills.map((s) => (
-                <span key={s} className="text-sm text-gray-600 border border-gray-200 px-3 py-1.5 rounded-full">
-                  {s}
-                </span>
+          <div>
+            <p className="text-xs text-gray-400 uppercase tracking-widest mb-8">Technologie</p>
+            <div className="space-y-6">
+              {skills.map((group) => (
+                <div key={group.label}>
+                  <p className="text-[10px] text-gray-300 uppercase tracking-[0.2em] mb-3">{group.label}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((s) => (
+                      <span key={s} className="text-xs text-gray-600 border border-gray-100 px-3 py-1.5 rounded-full hover:border-black transition-colors">
+                        {s}
+                      </span>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
