@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import { Analytics } from "@vercel/analytics/react";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -24,10 +25,12 @@ export default function RootLayout({
   return (
     <html lang="cs" className={dmSans.variable}>
       <body className={`${dmSans.className} bg-white text-black antialiased w-full overflow-x-hidden`}>
-        <ScrollProgress />
-        <Navbar />
-        {children}
-        <Analytics />
+        <LanguageProvider>
+          <ScrollProgress />
+          <Navbar />
+          {children}
+          <Analytics />
+        </LanguageProvider>
       </body>
     </html>
   );

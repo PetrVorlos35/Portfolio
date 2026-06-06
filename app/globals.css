@@ -58,6 +58,12 @@ body {
   color: #ffffff;
 }
 
+/* --- FOCUS STYLES --- */
+*:focus-visible {
+  outline: 2px solid #0a0a0a;
+  outline-offset: 4px;
+}
+
 /* --- SECTION DIVIDER --- */
 .divider {
   width: 100%;
