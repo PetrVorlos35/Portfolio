@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowIcon } from "./Icons";
 import { useLanguage } from "@/context/LanguageContext";
 
-const EMAIL = "petrvorlicek97@gmail.com";
+const EMAIL = "petr@vorlos.eu";
 
 export default function Contact() {
   const [copied, setCopied] = useState(false);
@@ -36,7 +36,7 @@ export default function Contact() {
         <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
           <button
             onClick={handleCopy}
-            className="group relative flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6 text-xl md:text-3xl font-light text-black pb-3 overflow-hidden cursor-pointer"
+            className="group relative flex items-center gap-4 md:gap-6 text-xl md:text-3xl font-light text-black pb-3 overflow-hidden cursor-pointer"
           >
             <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-1">{EMAIL}</span>
             <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gray-200" />
