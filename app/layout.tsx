@@ -26,6 +26,7 @@ export default function RootLayout({
     <html lang="cs" className={dmSans.variable}>
       <body className={`${dmSans.className} bg-white text-black antialiased w-full overflow-x-hidden`}>
         <LanguageProvider>
+          <a href="#home" className="skip-link">Skip to content</a>
           <ScrollProgress />
           <Navbar />
           {children}

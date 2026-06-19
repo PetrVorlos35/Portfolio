@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowIcon } from "./Icons";
@@ -19,6 +18,15 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMobileMenuOpen(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -73,8 +81,9 @@ export default function Navbar() {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
+                aria-current={activeSection === link.id ? "true" : undefined}
                 className={`text-sm transition-colors active:scale-[0.98] ${
-                  activeSection === link.id ? "text-black" : "text-gray-400 hover:text-black"
+                  activeSection === link.id ? "text-accent-ink font-medium" : "text-gray-500 hover:text-black"
                 }`}
               >
                 {link.name}
@@ -85,10 +94,10 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-6">
             <button
               onClick={() => setLanguage(language === "cs" ? "en" : "cs")}
-              className="text-xs font-mono text-gray-400 hover:text-black transition-colors active:scale-[0.95]"
-              aria-label="Toggle language"
+              className="text-xs font-mono text-gray-500 hover:text-black transition-colors active:scale-[0.95]"
+              aria-label={language === "cs" ? "Switch to English" : "Přepnout do češtiny"}
             >
-              {language === "cs" ? "EN" : "CZ"}
+              {language === "cs" ? "EN" : "CS"}
             </button>
             <a
               href="https://github.com/PetrVorlos35"
@@ -107,8 +116,11 @@ export default function Navbar() {
           <button
             className="md:hidden text-black z-50 active:scale-95 transition-transform"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-menu"
+            aria-label={mobileMenuOpen ? t.nav.close : t.nav.menu}
           >
-            {mobileMenuOpen ? "Zavřít" : "Menu"}
+            {mobileMenuOpen ? t.nav.close : t.nav.menu}
           </button>
         </div>
       </nav>
@@ -117,6 +129,7 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div
+            id="mobile-menu"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -130,8 +143,9 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 onClick={() => scrollToSection(link.id)}
+                aria-current={activeSection === link.id ? "true" : undefined}
                 className={`text-2xl font-light active:scale-[0.98] transition-transform ${
-                  activeSection === link.id ? "text-black" : "text-gray-400"
+                  activeSection === link.id ? "text-accent-ink" : "text-gray-500"
                 }`}
               >
                 {link.name}
@@ -147,7 +161,7 @@ export default function Navbar() {
                 onClick={() => setLanguage(language === "cs" ? "en" : "cs")}
                 className="text-sm font-mono text-gray-500 hover:text-black transition-colors"
               >
-                {language === "cs" ? "Switch to EN" : "Přepnout na CZ"}
+                {language === "cs" ? "Switch to EN" : "Přepnout na CS"}
               </button>
             </motion.div>
             <motion.a

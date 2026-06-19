@@ -3,11 +3,13 @@ export const cs = {
     projects: "Projekty",
     about: "O mně",
     contact: "Kontakt",
+    menu: "Menu",
+    close: "Zavřít",
   },
   hero: {
     portfolio: "Portfolio — 2026",
     location: "Praha, CZ",
-    tagline: "Fullstack vývojář zaměřený na čistý kód, rychlý výkon a design, který dýchá.",
+    tagline: "Fullstack vývojář, momentálně v Praze. Půlka práce je kód, půlka je doladit, aby to sedělo.",
     available: "Dostupný pro projekty",
   },
   projects: {
@@ -17,6 +19,7 @@ export const cs = {
     items: [
       {
         num: "01",
+        image: "/projects/journeo.png",
         title: "Journeo",
         category: "Fullstack App",
         year: "2026",
@@ -27,6 +30,7 @@ export const cs = {
       },
       {
         num: "02",
+        image: "/projects/portfolio.png",
         title: "Minimalist Portfolio",
         category: "Web / Design",
         year: "2026",
@@ -36,6 +40,7 @@ export const cs = {
       },
       {
         num: "03",
+        image: "/projects/budget.png",
         title: "Budgeting app",
         category: "Web / Design",
         year: "2026",
@@ -46,6 +51,7 @@ export const cs = {
       },
       {
         num: "04",
+        image: "/projects/journeo-old.png",
         title: "Journeo old",
         category: "Fullstack App",
         year: "2025",
@@ -55,6 +61,7 @@ export const cs = {
       },
       {
         num: "05",
+        image: "/projects/nba.png",
         title: "NBA Guessing Game",
         category: "Game / Web App",
         year: "2023",
