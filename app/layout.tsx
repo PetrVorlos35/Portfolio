@@ -5,7 +5,6 @@ import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import { Analytics } from "@vercel/analytics/react";
 import { LanguageProvider } from "@/context/LanguageContext";
-import Script from "next/script";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -25,14 +24,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="cs" className={dmSans.variable}>
-      <head>
-        <Script
-          src="https://analytics.ahrefs.com/analytics.js"
-          data-key="jrZaX+nr9QVOLpCtGPlTYA"
-          strategy="afterInteractive"
-          async
-        />
-      </head>
       <body className={`${dmSans.className} bg-white text-black antialiased w-full overflow-x-hidden`}>
         <LanguageProvider>
           <a href="#home" className="skip-link">Skip to content</a>
