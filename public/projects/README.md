@@ -7,6 +7,7 @@ Drop a screenshot here for each project to light up the hover preview
 Expected filenames (referenced from `locales/cs.ts` + `locales/en.ts`):
 
 - `journeo.png`      — Journeo
+- `outlay.png`       — Outlay
 - `portfolio.png`    — Minimalist Portfolio
 - `budget.png`       — Budgeting app
 - `journeo-old.png`  — Journeo old

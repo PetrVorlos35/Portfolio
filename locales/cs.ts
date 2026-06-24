@@ -30,6 +30,17 @@ export const cs = {
       },
       {
         num: "02",
+        image: "/projects/outlay.png",
+        title: "Outlay",
+        category: "Fullstack App",
+        year: "2026",
+        description: "Sledování předplatných, které drží všechny opakované platby na jednom místě, s přihlášením a serverless backendem.",
+        techs: ["Next.js", "TypeScript", "Convex", "TailwindCSS"],
+        link: "https://github.com/PetrVorlos35/outlay",
+        live: "https://outlay.vorlos.eu",
+      },
+      {
+        num: "03",
         image: "/projects/portfolio.png",
         title: "Minimalist Portfolio",
         category: "Web / Design",
@@ -39,7 +50,7 @@ export const cs = {
         link: "https://github.com/PetrVorlos35/Portfolio",
       },
       {
-        num: "03",
+        num: "04",
         image: "/projects/budget.png",
         title: "Budgeting app",
         category: "Web / Design",
@@ -50,7 +61,7 @@ export const cs = {
         live: "https://budget.vorlos.eu",
       },
       {
-        num: "04",
+        num: "05",
         image: "/projects/journeo-old.png",
         title: "Journeo old",
         category: "Fullstack App",
@@ -60,7 +71,7 @@ export const cs = {
         link: "https://github.com/PetrVorlos35/Journeo",
       },
       {
-        num: "05",
+        num: "06",
         image: "/projects/nba.png",
         title: "NBA Guessing Game",
         category: "Game / Web App",
