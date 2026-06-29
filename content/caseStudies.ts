@@ -22,6 +22,7 @@ export type CaseStudy = {
   year: string;
   liveUrl?: string;
   repoUrl: string;
+  hero?: string;
   cs: CaseStudyContent;
   en: CaseStudyContent;
 };
@@ -32,6 +33,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     year: "2026",
     liveUrl: "https://journeo.vorlos.eu",
     repoUrl: "https://github.com/PetrVorlos35/Journeov2",
+    hero: "/projects/journeo.png",
     en: {
       title: "Journeo",
       tagline:
@@ -161,6 +163,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     year: "2026",
     liveUrl: "https://outlay.vorlos.eu",
     repoUrl: "https://github.com/PetrVorlos35/outlay",
+    hero: "/projects/outlay.png",
     en: {
       title: "Outlay",
       tagline:

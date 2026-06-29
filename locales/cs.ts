@@ -119,5 +119,8 @@ export const cs = {
     stack: "Technologie",
     viewLive: "Živá ukázka",
     source: "Zdrojový kód",
+    screenshotAlt: "rozhraní aplikace",
+    onThisPage: "Na této stránce",
+    newTab: "(otevře se v novém okně)",
   },
 };

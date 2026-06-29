@@ -119,5 +119,8 @@ export const en = {
     stack: "Tech stack",
     viewLive: "View live",
     source: "Source",
+    screenshotAlt: "product interface",
+    onThisPage: "On this page",
+    newTab: "(opens in a new tab)",
   },
 };
