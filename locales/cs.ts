@@ -7,7 +7,7 @@ export const cs = {
     close: "Zavřít",
   },
   hero: {
-    portfolio: "Portfolio — 2026",
+    portfolio: "Portfolio · 2026",
     location: "Praha, CZ",
     tagline: "Fullstack vývojář, momentálně v Praze. Půlka práce je kód, půlka je doladit, aby to sedělo.",
     available: "Dostupný pro projekty",
@@ -16,6 +16,7 @@ export const cs = {
     label: "Vybrané projekty",
     title: "Moje práce",
     count: "{count} projekty",
+    caseStudy: "Případová studie",
     items: [
       {
         num: "01",
@@ -27,6 +28,7 @@ export const cs = {
         techs: ["Vite.js", "JavaScript", "TailwindCSS", "MariaDB"],
         link: "https://github.com/PetrVorlos35/Journeov2",
         live: "https://journeo.vorlos.eu",
+        slug: "journeo",
       },
       {
         num: "02",
@@ -38,6 +40,7 @@ export const cs = {
         techs: ["Next.js", "TypeScript", "Convex", "TailwindCSS"],
         link: "https://github.com/PetrVorlos35/outlay",
         live: "https://outlay.vorlos.eu",
+        slug: "outlay",
       },
       {
         num: "03",
@@ -86,7 +89,7 @@ export const cs = {
     label: "O mně",
     title: "Kdo jsem",
     bio1: "Jsem fullstack vývojář z Ústí nad Labem, aktuálně studující na VŠE v Praze. Specializuji se na tvorbu rychlých, čistých a přístupných webových aplikací.",
-    bio2: "Kladu důraz na detail — od správné architektury kódu přes výkon až po vizuální dojem. Věřím, že dobrý software musí být zároveň dobrý produkt.",
+    bio2: "Kladu důraz na detail, od správné architektury kódu přes výkon až po vizuální dojem. Věřím, že dobrý software musí být zároveň dobrý produkt.",
     techLabel: "Technologie",
     frontend: "Frontend",
     backend: "Backend",
@@ -94,10 +97,10 @@ export const cs = {
     pathLabel: "Cesta",
     path1Title: "VŠE Praha",
     path1Sub: "Fakulta informatiky a statistiky",
-    path1Period: "2025 — Nyní",
+    path1Period: "2025 – Nyní",
     path2Title: "SPŠ Ústí nad Labem",
     path2Sub: "Informační technologie · Maturita",
-    path2Period: "2021 — 2025",
+    path2Period: "2021 – 2025",
     path3Title: "Začátky v kódu",
     path3Sub: "První setkání s webovými technologiemi",
     path3Period: "2020",
@@ -109,5 +112,12 @@ export const cs = {
     copy: "Zkopírovat",
     copied: "Zkopírováno",
     location: "Praha · Ústí n. L.",
+  },
+  caseStudy: {
+    back: "Zpět na práci",
+    role: "Role",
+    stack: "Technologie",
+    viewLive: "Živá ukázka",
+    source: "Zdrojový kód",
   },
 };

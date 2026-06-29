@@ -19,8 +19,12 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   const [language, setLanguage] = useState<Language>("cs");
   const [mounted, setMounted] = useState(false);
 
+  // Detect the language once on mount. This must run in an effect (not a lazy
+  // initializer) so SSR and the first client render both default to "cs". The
+  // `mounted` gate below hides content until detection completes, avoiding both
+  // a hydration mismatch and a flash of the wrong language.
+  /* eslint-disable react-hooks/set-state-in-effect -- intentional one-time mount detection (see note above) */
   useEffect(() => {
-    // Základní detekce jazyka
     const savedLang = localStorage.getItem("language") as Language;
     if (savedLang && (savedLang === "cs" || savedLang === "en")) {
       setLanguage(savedLang);
@@ -32,6 +36,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     }
     setMounted(true);
   }, []);
+  /* eslint-enable react-hooks/set-state-in-effect */
+
+  // Keep <html lang> in sync so screen readers and search engines read the
+  // active language (the site is fully bilingual, not just Czech).
+  useEffect(() => {
+    document.documentElement.lang = language;
+  }, [language]);
 
   const handleSetLanguage = (lang: Language) => {
     setLanguage(lang);

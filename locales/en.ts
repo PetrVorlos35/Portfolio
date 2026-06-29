@@ -7,7 +7,7 @@ export const en = {
     close: "Close",
   },
   hero: {
-    portfolio: "Portfolio — 2026",
+    portfolio: "Portfolio · 2026",
     location: "Prague, CZ",
     tagline: "Fullstack dev, currently in Prague. Half the job is code, half is making it actually feel right.",
     available: "Available for projects",
@@ -16,6 +16,7 @@ export const en = {
     label: "Selected projects",
     title: "My work",
     count: "{count} projects",
+    caseStudy: "Case study",
     items: [
       {
         num: "01",
@@ -27,6 +28,7 @@ export const en = {
         techs: ["Vite.js", "JavaScript", "TailwindCSS", "MariaDB"],
         link: "https://github.com/PetrVorlos35/Journeov2",
         live: "https://journeo.vorlos.eu",
+        slug: "journeo",
       },
       {
         num: "02",
@@ -38,6 +40,7 @@ export const en = {
         techs: ["Next.js", "TypeScript", "Convex", "TailwindCSS"],
         link: "https://github.com/PetrVorlos35/outlay",
         live: "https://outlay.vorlos.eu",
+        slug: "outlay",
       },
       {
         num: "03",
@@ -86,7 +89,7 @@ export const en = {
     label: "About me",
     title: "Who I am",
     bio1: "I am a fullstack developer from Ústí nad Labem, currently studying at the Prague University of Economics and Business. I specialize in building fast, clean, and accessible web applications.",
-    bio2: "I place a strong emphasis on detail — from proper code architecture to performance and visual impression. I believe that good software must also be a good product.",
+    bio2: "I place a strong emphasis on detail, from proper code architecture to performance and visual impression. I believe that good software must also be a good product.",
     techLabel: "Technologies",
     frontend: "Frontend",
     backend: "Backend",
@@ -94,10 +97,10 @@ export const en = {
     pathLabel: "Journey",
     path1Title: "VŠE Prague",
     path1Sub: "Faculty of Informatics and Statistics",
-    path1Period: "2025 — Present",
+    path1Period: "2025 – Present",
     path2Title: "SPŠ Ústí nad Labem",
     path2Sub: "Information Technology · High School",
-    path2Period: "2021 — 2025",
+    path2Period: "2021 – 2025",
     path3Title: "Coding beginnings",
     path3Sub: "First encounter with web technologies",
     path3Period: "2020",
@@ -109,5 +112,12 @@ export const en = {
     copy: "Copy",
     copied: "Copied",
     location: "Prague · Ústí n. L.",
+  },
+  caseStudy: {
+    back: "Back to work",
+    role: "Role",
+    stack: "Tech stack",
+    viewLive: "View live",
+    source: "Source",
   },
 };

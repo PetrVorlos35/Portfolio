@@ -12,9 +12,37 @@ const dmSans = DM_Sans({
   variable: "--font-dm-sans",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vorlos.eu";
+const title = "Petr Vorlíček · Fullstack Developer";
+const description =
+  "Portfolio fullstack vývojáře zaměřeného na čistý kód, rychlý výkon a minimalistický design.";
+
 export const metadata: Metadata = {
-  title: "Petr Vorlíček — Fullstack Developer",
-  description: "Portfolio fullstack vývojáře zaměřeného na čistý kód, rychlý výkon a minimalistický design.",
+  metadataBase: new URL(siteUrl),
+  title,
+  description,
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: siteUrl,
+    siteName: "Petr Vorlíček",
+    title,
+    description,
+    locale: "cs_CZ",
+    // og:image is supplied by app/opengraph-image.tsx (file-based convention)
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description,
+    // twitter:image is supplied by app/twitter-image.tsx
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({

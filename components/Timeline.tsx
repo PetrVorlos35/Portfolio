@@ -26,7 +26,9 @@ const timelineData = [
   },
 ];
 
-const TimelineItem = ({ event }: { event: any }) => {
+type TimelineEvent = (typeof timelineData)[number];
+
+const TimelineItem = ({ event }: { event: TimelineEvent }) => {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: ref,

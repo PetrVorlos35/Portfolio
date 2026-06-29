@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { usePathname, useRouter } from "next/navigation";
 import { ArrowIcon } from "./Icons";
 import { useLanguage } from "@/context/LanguageContext";
 
@@ -10,6 +11,9 @@ export default function Navbar() {
   const [activeSection, setActiveSection] = useState("");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const { t, language, setLanguage } = useLanguage();
+  const pathname = usePathname();
+  const router = useRouter();
+  const onHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -29,6 +33,9 @@ export default function Navbar() {
   }, [mobileMenuOpen]);
 
   useEffect(() => {
+    // Section highlighting only applies on the home page. Re-run on route
+    // changes so the observer re-attaches when navigating back from a sub-page.
+    if (!onHome) return;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -43,10 +50,16 @@ export default function Navbar() {
     const sections = document.querySelectorAll("section[id]");
     sections.forEach((s) => observer.observe(s));
     return () => sections.forEach((s) => observer.unobserve(s));
-  }, []);
+  }, [onHome]);
 
   const scrollToSection = (id: string) => {
     setMobileMenuOpen(false);
+    // On a sub-page (e.g. a case study) there are no sections to scroll to,
+    // so route home to the right anchor instead.
+    if (!onHome) {
+      router.push(id === "home" ? "/" : `/#${id}`);
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -59,6 +72,9 @@ export default function Navbar() {
     { name: t.nav.about, id: "about" },
     { name: t.nav.contact, id: "contact" },
   ];
+
+  // Active highlight is meaningful only on the home page.
+  const effectiveActive = onHome ? activeSection : "";
 
   return (
     <>
@@ -81,9 +97,9 @@ export default function Navbar() {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                aria-current={activeSection === link.id ? "true" : undefined}
+                aria-current={effectiveActive === link.id ? "true" : undefined}
                 className={`text-sm transition-colors active:scale-[0.98] ${
-                  activeSection === link.id ? "text-accent-ink font-medium" : "text-gray-500 hover:text-black"
+                  effectiveActive === link.id ? "text-accent-ink font-medium" : "text-gray-500 hover:text-black"
                 }`}
               >
                 {link.name}
@@ -143,9 +159,9 @@ export default function Navbar() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.1 }}
                 onClick={() => scrollToSection(link.id)}
-                aria-current={activeSection === link.id ? "true" : undefined}
+                aria-current={effectiveActive === link.id ? "true" : undefined}
                 className={`text-2xl font-light active:scale-[0.98] transition-transform ${
-                  activeSection === link.id ? "text-accent-ink" : "text-gray-500"
+                  effectiveActive === link.id ? "text-accent-ink" : "text-gray-500"
                 }`}
               >
                 {link.name}
