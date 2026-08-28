@@ -11,6 +11,7 @@ export const cs = {
     location: "Praha, CZ",
     tagline: "Fullstack vývojář, momentálně v Praze. Půlka práce je kód, půlka je doladit, aby to sedělo.",
     available: "Dostupný pro projekty",
+    selectedWork: "Vybraná práce",
   },
   projects: {
     label: "Vybrané projekty",

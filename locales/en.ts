@@ -11,6 +11,7 @@ export const en = {
     location: "Prague, CZ",
     tagline: "Fullstack dev, currently in Prague. Half the job is code, half is making it actually feel right.",
     available: "Available for projects",
+    selectedWork: "Selected work",
   },
   projects: {
     label: "Selected projects",
