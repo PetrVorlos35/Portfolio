@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { useLanguage } from "@/context/LanguageContext";
 
 const NAME_EASE = [0.16, 1, 0.3, 1] as const;
@@ -33,6 +33,16 @@ export default function Hero() {
   const { t, language } = useLanguage();
   const reduce = useReducedMotion();
   const pragueTime = usePragueTime();
+  const sectionRef = useRef<HTMLElement>(null);
+
+  // Parallax: the name drifts up and fades slightly faster than the rest of
+  // the section as the hero scrolls out, giving it depth on the way out.
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const nameY = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const nameOpacity = useTransform(scrollYProgress, [0, 1], [1, 0.4]);
 
   const nameReveal = (delay: number) =>
     reduce
@@ -47,6 +57,7 @@ export default function Hero() {
 
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="min-h-screen flex flex-col justify-between pt-16 px-6 md:px-10 pb-12 max-w-6xl mx-auto"
     >
@@ -74,7 +85,10 @@ export default function Hero() {
       </div>
 
       {/* MAIN NAME */}
-      <h1 className="display text-black py-12 md:py-0">
+      <motion.h1
+        style={reduce ? undefined : { y: nameY, opacity: nameOpacity }}
+        className="display text-black py-12 md:py-0"
+      >
         <span className="block overflow-hidden">
           <motion.span
             {...nameReveal(0)}
@@ -99,7 +113,7 @@ export default function Hero() {
           className="mt-6 md:mt-4 block h-px w-20 origin-left"
           style={{ backgroundColor: "var(--color-accent)" }}
         />
-      </h1>
+      </motion.h1>
 
       {/* BOTTOM AREA */}
       <div className="flex flex-col gap-8">
