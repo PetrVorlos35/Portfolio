@@ -69,10 +69,12 @@ export default function FeaturedProjects() {
                   </div>
                 </div>
 
-                {/* Right side. Wraps on mobile; on desktop stays a single row
-                    so rows line up, with the tech chips wrapping internally. */}
-                <div className="flex items-center flex-wrap md:flex-nowrap gap-x-4 gap-y-3 md:gap-8 lg:gap-12 ml-12 md:ml-0 mt-3 md:mt-0">
-                  <div className="hidden md:flex gap-2 flex-wrap justify-end md:min-w-0">
+                {/* Right side. On desktop this stays a single row when it fits;
+                    if it doesn't, the tech-chip group drops to its own line as
+                    a whole (never splitting mid-list) instead of individual
+                    chips wrapping ragged. */}
+                <div className="flex items-center flex-wrap md:justify-end gap-x-4 gap-y-3 md:gap-8 lg:gap-12 ml-12 md:ml-0 mt-3 md:mt-0">
+                  <div className="hidden md:flex gap-2 flex-nowrap justify-end shrink-0">
                     {project.techs.map((tech) => (
                       <span key={tech} className="text-[10px] uppercase tracking-wider text-gray-500 border border-gray-200 px-2.5 py-1 rounded-full bg-white/50">
                         {tech}

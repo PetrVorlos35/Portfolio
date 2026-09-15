@@ -145,6 +145,15 @@ body::before {
   border-bottom: 1px solid #e5e7eb;
 }
 
+/* --- PRINT --- */
+/* Strip decorative/interactive chrome so a recruiter hitting Cmd/Ctrl+P on
+   /cv (or any page) gets clean content instead of nav bars and page texture. */
+@media print {
+  body::before {
+    display: none !important;
+  }
+}
+
 /* --- REDUCED MOTION --- */
 @media (prefers-reduced-motion: reduce) {
   html {

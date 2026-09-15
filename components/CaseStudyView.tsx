@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { track } from "@vercel/analytics/react";
 import { useLanguage } from "@/context/LanguageContext";
 import { ArrowIcon } from "./Icons";
 import Footer from "./Footer";
@@ -13,6 +14,19 @@ export default function CaseStudyView({ slug }: { slug: string }) {
   // Hide the hero image gracefully if the screenshot asset is missing, so the
   // page never ships a broken image.
   const [heroFailed, setHeroFailed] = useState(false);
+
+  // Read the `?from=cv` query param client-side (rather than useSearchParams,
+  // which would force this statically-generated page into dynamic rendering)
+  // so we know whether a recruiter arrived from /cv vs. normal browsing —
+  // used to send the back link home and to tag the analytics event below.
+  const [fromCV, setFromCV] = useState(false);
+  /* eslint-disable react-hooks/set-state-in-effect -- intentional one-time read of location.search on mount (see note above) */
+  useEffect(() => {
+    const isFromCV = new URLSearchParams(window.location.search).get("from") === "cv";
+    setFromCV(isFromCV);
+    track("case_study_view", { slug, source: isFromCV ? "cv" : "portfolio" });
+  }, [slug]);
+  /* eslint-enable react-hooks/set-state-in-effect */
 
   const study = caseStudies[slug];
   const c = study[language];
@@ -68,15 +82,16 @@ export default function CaseStudyView({ slug }: { slug: string }) {
       </nav>
 
       <article className="pt-32 md:pt-40 pb-24 max-w-4xl mx-auto px-6 md:px-10">
-        {/* Back link */}
+        {/* Back link — returns to /cv when that's where the visitor came from,
+            instead of dropping a recruiter back into the general portfolio. */}
         <Link
-          href="/#projects"
+          href={fromCV ? "/cv" : "/#projects"}
           className="group inline-flex items-center gap-2 text-sm text-gray-500 hover:text-black transition-colors mb-12"
         >
           <span className="transition-transform duration-300 group-hover:-translate-x-1">
             <ArrowIcon size={13} className="rotate-[225deg]" />
           </span>
-          {t.caseStudy.back}
+          {fromCV ? t.caseStudy.backCV : t.caseStudy.back}
         </Link>
 
         {/* Header rendered static (no reveal) so the most important content is

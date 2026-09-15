@@ -55,10 +55,14 @@ export default function RootLayout({
       <body className={`${dmSans.className} bg-white text-black antialiased w-full overflow-x-hidden`}>
         <LanguageProvider>
           <a href="#home" className="skip-link">Skip to content</a>
+          {/* Mounted first so window.va is queued up before any descendant's
+              own mount effect can call track() — e.g. CaseStudyView's
+              case_study_view event, which otherwise fires before Analytics
+              has initialized and is silently dropped. */}
+          <Analytics />
           <ScrollProgress />
           <Navbar />
           {children}
-          <Analytics />
         </LanguageProvider>
       </body>
     </html>

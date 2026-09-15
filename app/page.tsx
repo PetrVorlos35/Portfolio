@@ -10,7 +10,7 @@ export default function Home() {
       <Hero />
       <FeaturedProjects />
       <About />
-      <Contact />
+      <Contact compact />
       <Footer />
     </main>
   );

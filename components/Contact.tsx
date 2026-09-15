@@ -10,7 +10,7 @@ const EMAIL = "petr@vorlos.eu";
 
 type CopyState = "idle" | "copied" | "error";
 
-export default function Contact() {
+export default function Contact({ compact = false }: { compact?: boolean }) {
   const [status, setStatus] = useState<CopyState>("idle");
   const { t } = useLanguage();
   const reveal = useReveal();
@@ -26,21 +26,25 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 max-w-6xl mx-auto px-6 md:px-10">
-      <div className="divider mb-20" />
+    <section id="contact" className={`${compact ? "py-20" : "py-32"} max-w-6xl mx-auto px-6 md:px-10`}>
+      <div className={`divider ${compact ? "mb-12" : "mb-20"}`} />
 
       <motion.div {...reveal()}>
         <p className="text-xs text-gray-500 uppercase tracking-widest mb-8">{t.contact.label}</p>
 
-        <h2 className="display font-light text-black mb-16" style={{ lineHeight: "0.95" }}>
-          {t.contact.titlePart1}<br />{t.contact.titlePart2}
-        </h2>
+        {compact ? (
+          <h2 className="display-sm font-light text-black mb-10">{t.contact.compactTitle}</h2>
+        ) : (
+          <h2 className="display font-light text-black mb-16" style={{ lineHeight: "0.95" }}>
+            {t.contact.titlePart1}<br />{t.contact.titlePart2}
+          </h2>
+        )}
 
         <div className="flex flex-col md:flex-row items-start md:items-center gap-8 md:gap-16">
           <button
             onClick={handleCopy}
             aria-label={`${t.contact.copy}: ${EMAIL}`}
-            className="group relative flex items-center gap-4 md:gap-6 text-xl md:text-3xl font-light text-black pb-3 overflow-hidden cursor-pointer"
+            className={`group relative flex items-center gap-4 md:gap-6 ${compact ? "text-lg md:text-2xl" : "text-xl md:text-3xl"} font-light text-black pb-3 overflow-hidden cursor-pointer`}
           >
             <span className="relative z-10 transition-transform duration-300 group-hover:-translate-y-1">{EMAIL}</span>
             <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gray-200" />
@@ -86,7 +90,7 @@ export default function Contact() {
         </div>
 
         {/* Social links */}
-        <div className="flex flex-wrap gap-8 mt-24">
+        <div className={`flex flex-wrap gap-8 ${compact ? "mt-12" : "mt-24"}`}>
           <a
             href="https://github.com/PetrVorlos35"
             target="_blank"
