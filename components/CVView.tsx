@@ -12,7 +12,9 @@ const PHONE = "+420 604 852 743";
 const EMAIL = "petr@vorlos.eu";
 
 export default function CVView() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const cvPdfHref = language === "en" ? "/petr-vorlicek-cv-en.pdf" : "/petr-vorlicek-cv.pdf";
+  const cvPdfFilename = language === "en" ? "Petr-Vorlicek-CV-EN.pdf" : "Petr-Vorlicek-CV.pdf";
   const reveal = useReveal();
 
   const skills = [
@@ -73,8 +75,8 @@ export default function CVView() {
 
           <div className="flex flex-wrap items-center gap-3 print:hidden">
             <a
-              href="/petr-vorlicek-cv.pdf"
-              download="Petr-Vorlicek-CV.pdf"
+              href={cvPdfHref}
+              download={cvPdfFilename}
               className="group inline-flex items-center gap-2 text-xs uppercase tracking-widest text-white bg-black border border-black px-5 py-2.5 rounded-full hover:bg-gray-800 transition-colors"
             >
               {t.cv.download}

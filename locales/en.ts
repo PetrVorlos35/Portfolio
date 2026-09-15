@@ -9,7 +9,7 @@ export const en = {
   hero: {
     portfolio: "Portfolio · 2026",
     location: "Prague, CZ",
-    tagline: "Fullstack dev, currently in Prague. Half the job is code, half is making it actually feel right.",
+    tagline: "Frontend developer & UI/UX designer, currently in Prague. Half the job is design, half is code, making it feel right from idea to pixel.",
     available: "Available for projects",
     selectedWork: "Selected work",
   },

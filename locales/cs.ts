@@ -9,7 +9,7 @@ export const cs = {
   hero: {
     portfolio: "Portfolio · 2026",
     location: "Praha, CZ",
-    tagline: "Fullstack vývojář, momentálně v Praze. Půlka práce je kód, půlka je doladit, aby to sedělo.",
+    tagline: "Frontend vývojář & UI/UX designér, momentálně v Praze. Půlka práce je návrh, půlka kód, aby to sedělo od nápadu po pixel.",
     available: "Dostupný pro projekty",
     selectedWork: "Vybraná práce",
   },
