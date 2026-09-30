@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { ArrowIcon } from "./Icons";
 import { useLanguage } from "@/context/LanguageContext";
@@ -13,7 +14,9 @@ export default function Navbar() {
   const { t, language, setLanguage } = useLanguage();
   const pathname = usePathname();
   const router = useRouter();
+  const reduce = useReducedMotion();
   const onHome = pathname === "/";
+  const onCV = pathname === "/cv";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +25,16 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Lock page scroll behind the fullscreen mobile menu.
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileMenuOpen]);
 
   useEffect(() => {
     if (!mobileMenuOpen) return;
@@ -119,18 +132,25 @@ export default function Navbar() {
               href="https://github.com/PetrVorlos35"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2 text-xs uppercase tracking-widest text-black border border-black/10 px-4 py-2 rounded-full hover:border-black/30 hover:bg-black/5 transition-all active:scale-[0.98]"
+              className="group flex items-center gap-1.5 text-sm text-gray-600 hover:text-black transition-colors"
             >
-              GitHub 
+              GitHub
               <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
-                <ArrowIcon size={12} />
+                <ArrowIcon size={11} />
               </span>
             </a>
+            <Link
+              href="/cv"
+              aria-current={onCV ? "page" : undefined}
+              className="text-sm text-black border border-black/15 px-4 py-1.5 rounded-full hover:border-black hover:bg-black hover:text-white transition-colors active:scale-[0.98]"
+            >
+              {t.footer.cv}
+            </Link>
           </div>
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden text-black z-50 active:scale-95 transition-transform"
+            className="md:hidden text-sm text-black z-50 -mr-2 px-2 py-2 active:scale-95 transition-transform"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
             aria-controls="mobile-menu"
@@ -146,51 +166,62 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <motion.div
             id="mobile-menu"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center gap-8"
+            initial={reduce ? false : { opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={reduce ? { opacity: 0, transition: { duration: 0 } } : { opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-40 bg-white flex flex-col justify-between px-6 pt-28 pb-10 md:hidden"
           >
-            {navLinks.map((link, i) => (
-              <motion.button
-                key={link.id}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: i * 0.1 }}
-                onClick={() => scrollToSection(link.id)}
-                aria-current={effectiveActive === link.id ? "true" : undefined}
-                className={`text-2xl font-light active:scale-[0.98] transition-transform ${
-                  effectiveActive === link.id ? "text-accent-ink" : "text-gray-500"
-                }`}
-              >
-                {link.name}
-              </motion.button>
-            ))}
-            <motion.div 
-              initial={{ opacity: 0 }} 
-              animate={{ opacity: 1 }} 
-              transition={{ delay: 0.3 }}
-              className="flex items-center gap-6 mt-4"
-            >
-              <button
-                onClick={() => setLanguage(language === "cs" ? "en" : "cs")}
-                className="text-sm font-mono text-gray-500 hover:text-black transition-colors"
-              >
-                {language === "cs" ? "Switch to EN" : "Přepnout na CS"}
-              </button>
-            </motion.div>
-            <motion.a
-              initial={{ opacity: 0 }}
+            <nav aria-label={t.nav.menu} className="flex flex-col">
+              {navLinks.map((link, i) => (
+                <motion.button
+                  key={link.id}
+                  initial={reduce ? false : { opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.05 + i * 0.06, duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                  onClick={() => scrollToSection(link.id)}
+                  aria-current={effectiveActive === link.id ? "true" : undefined}
+                  className={`flex items-baseline gap-4 py-3 text-left text-5xl font-light tracking-tight active:scale-[0.98] transition-transform ${
+                    effectiveActive === link.id ? "text-accent-ink" : "text-black"
+                  }`}
+                >
+                  <span className="text-xs font-mono text-gray-500 tracking-normal w-5">0{i + 1}</span>
+                  {link.name}
+                </motion.button>
+              ))}
+            </nav>
+
+            <motion.div
+              initial={reduce ? false : { opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 0.4 }}
-              href="https://github.com/PetrVorlos35"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 text-xs uppercase tracking-widest text-black border border-black/10 px-6 py-3 rounded-full active:scale-[0.98] transition-transform"
+              transition={{ delay: 0.25 }}
+              className="flex flex-col gap-6 border-t border-gray-200 pt-6"
             >
-              GitHub
-            </motion.a>
+              <Link
+                href="/cv"
+                onClick={() => setMobileMenuOpen(false)}
+                aria-current={onCV ? "page" : undefined}
+                className="flex items-center justify-center text-base text-white bg-black rounded-full py-3.5 active:scale-[0.98] transition-transform"
+              >
+                {t.footer.cv}
+              </Link>
+              <div className="flex items-center justify-between">
+                <a
+                  href="https://github.com/PetrVorlos35"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 py-2 text-sm text-gray-600"
+                >
+                  GitHub <ArrowIcon size={11} />
+                </a>
+                <button
+                  onClick={() => setLanguage(language === "cs" ? "en" : "cs")}
+                  className="py-2 text-sm font-mono text-gray-600"
+                >
+                  {language === "cs" ? "Switch to EN" : "Přepnout na CS"}
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

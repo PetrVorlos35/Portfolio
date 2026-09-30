@@ -129,7 +129,9 @@ body::before {
   transform-origin: left;
   transition: transform 0.3s ease;
 }
-.link-hover:hover::after {
+.link-hover:hover::after,
+.group:hover .link-hover::after,
+.group:focus-visible .link-hover::after {
   transform: scaleX(1);
 }
 
@@ -139,7 +141,7 @@ body::before {
   transition: background-color 0.2s ease;
 }
 .project-row:hover {
-  background-color: #faf9f7;
+  background-color: #f9fafb;
 }
 .project-row:last-child {
   border-bottom: 1px solid #e5e7eb;

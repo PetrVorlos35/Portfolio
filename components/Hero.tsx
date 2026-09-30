@@ -164,7 +164,7 @@ export default function Hero() {
           initial={reduce ? false : { opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.1 }}
-          className="group inline-flex items-center gap-2 self-start text-xs uppercase tracking-widest text-gray-500 hover:text-black transition-colors duration-300"
+          className="group inline-flex items-center gap-2 self-start text-sm text-gray-600 hover:text-black transition-colors duration-300"
         >
           {t.hero.selectedWork}
           <span

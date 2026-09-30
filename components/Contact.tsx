@@ -30,7 +30,7 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
       <div className={`divider ${compact ? "mb-12" : "mb-20"}`} />
 
       <motion.div {...reveal()}>
-        <p className="text-xs text-gray-500 uppercase tracking-widest mb-8">{t.contact.label}</p>
+        <p className="text-sm font-mono text-gray-500 mb-8">{t.contact.label}</p>
 
         {compact ? (
           <h2 className="display-sm font-light text-black mb-10">{t.contact.compactTitle}</h2>
@@ -124,7 +124,7 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
               <ArrowIcon size={12} className="shrink-0" />
             </span>
           </a>
-          <span className="text-sm text-gray-500 whitespace-nowrap ml-auto md:ml-0">{t.contact.location}</span>
+          <span className="text-sm text-gray-500 whitespace-nowrap">{t.contact.location}</span>
         </div>
       </motion.div>
     </section>

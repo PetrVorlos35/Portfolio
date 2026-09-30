@@ -13,9 +13,9 @@ const dmSans = DM_Sans({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vorlos.eu";
-const title = "Petr Vorlíček · Fullstack Developer";
+const title = "Petr Vorlíček · Frontend Developer & UI/UX Designer";
 const description =
-  "Portfolio fullstack vývojáře zaměřeného na čistý kód, rychlý výkon a minimalistický design.";
+  "Portfolio frontend vývojáře a UI/UX designéra z Prahy — návrh i kód, od nápadu po pixel.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

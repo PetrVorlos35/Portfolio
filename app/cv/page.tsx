@@ -4,7 +4,7 @@ import CVView from "@/components/CVView";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://vorlos.eu";
 const title = "Petr Vorlíček · CV";
 const description =
-  "Životopis Petra Vorlíčka, fullstack vývojáře z Prahy — vzdělání, technologie a vybrané projekty.";
+  "Životopis Petra Vorlíčka, frontend vývojáře a UI/UX designéra z Prahy — vzdělání, dovednosti a vybrané projekty.";
 
 export const metadata: Metadata = {
   title,

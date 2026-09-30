@@ -8,7 +8,7 @@ import { join } from "path";
 // green "available" status dot.
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Petr Vorlíček · Fullstack Developer";
+export const alt = "Petr Vorlíček · Frontend Developer & UI/UX Designer";
 
 const ACCENT = "#2275e8";
 const INK = "#0a0a0a";
@@ -89,12 +89,12 @@ export default function OgImage() {
               display: "flex",
               alignItems: "center",
               marginTop: 24,
-              fontSize: 40,
+              fontSize: 36,
               fontWeight: 400,
             }}
           >
-            Fullstack
-            <span style={{ color: ACCENT, marginLeft: 14 }}>Developer</span>
+            Frontend Developer
+            <span style={{ color: ACCENT, marginLeft: 14 }}>&amp; UI/UX Designer</span>
           </div>
           <div
             style={{
@@ -105,7 +105,7 @@ export default function OgImage() {
               lineHeight: 1.4,
             }}
           >
-            Half the job is code, half is making it actually feel right.
+            Half the job is design, half is code, making it feel right from idea to pixel.
           </div>
         </div>
 

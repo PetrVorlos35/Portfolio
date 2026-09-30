@@ -15,13 +15,13 @@ export default function Footer() {
             © {new Date().getFullYear()} Petr Vorlíček
             </p>
             <div className="flex gap-4">
-                <a href="https://github.com/PetrVorlos35" target="_blank" rel="noopener noreferrer" className="text-[10px] uppercase tracking-widest text-gray-500 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap">
+                <a href="https://github.com/PetrVorlos35" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-600 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap">
                   GitHub <ArrowIcon size={10} className="shrink-0" />
                 </a>
-                <a href="https://instagram.com/petr.vorel35" target="_blank" rel="noopener noreferrer" className="text-[10px] uppercase tracking-widest text-gray-500 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap">
+                <a href="https://instagram.com/petr.vorel35" target="_blank" rel="noopener noreferrer" className="text-xs text-gray-600 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap">
                   Instagram <ArrowIcon size={10} className="shrink-0" />
                 </a>
-                <Link href="/cv" className="text-[10px] uppercase tracking-widest text-gray-500 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap">
+                <Link href="/cv" className="text-xs text-gray-600 hover:text-black transition-colors flex items-center gap-1 whitespace-nowrap">
                   {t.footer.cv} <ArrowIcon size={10} className="shrink-0" />
                 </Link>
             </div>
