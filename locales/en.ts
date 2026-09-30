@@ -63,22 +63,23 @@ export const en = {
       },
       {
         num: "03",
+        title: "Splitee",
+        category: "Mobile Web App",
+        year: "2026",
+        description: "Realtime expense splitting for a group of friends: log a cost in seconds and see who owes whom, down to the cent.",
+        techs: ["Next.js", "TypeScript", "Convex", "TailwindCSS"],
+        link: "https://github.com/PetrVorlos35/splitee",
+        live: "https://splitee.vorlos.eu",
+        slug: "splitee",
+      },
+      {
+        num: "04",
         title: "Minimalist Portfolio",
         category: "Web / Design",
         year: "2026",
         description: "Redesign of personal portfolio focusing on clean typography and high performance.",
         techs: ["Next.js", "TailwindCSS", "Framer Motion"],
         link: "https://github.com/PetrVorlos35/Portfolio",
-      },
-      {
-        num: "04",
-        title: "Budgeting app",
-        category: "Web / Design",
-        year: "2026",
-        description: "Money calculation tool for personal use and trip budgeting integrated with Journeo.",
-        techs: ["Next.js", "TailwindCSS", "Framer Motion"],
-        link: "https://github.com/PetrVorlos35/budgetingapp",
-        live: "https://budget.vorlos.eu",
       },
     ]
   },
@@ -150,6 +151,18 @@ export const en = {
         bullets: [
           { text: "UI/UX design of analytics dashboards in Figma, built for fast, error-free transaction entry on mobile." },
           { text: "Built a working prototype in Next.js, React, and Tailwind CSS focused on clear expense categorization and clean components." },
+        ],
+      },
+      {
+        title: "Splitee",
+        subtitle: "Mobile-first PWA for splitting group expenses in real time",
+        link: "https://splitee.vorlos.eu",
+        linkLabel: "splitee.vorlos.eu",
+        caseStudySlug: "splitee",
+        bullets: [
+          { label: "Product & design system", text: "Wrote the product spec and a custom design system (a postal money-order form metaphor), built for fast one-handed expense entry." },
+          { label: "Realtime backend", text: "Next.js, TypeScript and Convex with Google sign-in; three split modes, debts traced to concrete shares, one-tap settle-up, and guests who can claim their history later." },
+          { label: "Correctness", text: "Money stored as integer cents with deterministic remainder handling; 185 tests (Vitest, convex-test) across the domain logic." },
         ],
       },
       {

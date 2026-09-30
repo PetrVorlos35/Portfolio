@@ -63,22 +63,23 @@ export const cs = {
       },
       {
         num: "03",
+        title: "Splitee",
+        category: "Mobilní web app",
+        year: "2026",
+        description: "Realtime dělení výdajů v partě kamarádů: zapiš útratu za pár vteřin a uvidíš, kdo komu kolik dluží, na haléř přesně.",
+        techs: ["Next.js", "TypeScript", "Convex", "TailwindCSS"],
+        link: "https://github.com/PetrVorlos35/splitee",
+        live: "https://splitee.vorlos.eu",
+        slug: "splitee",
+      },
+      {
+        num: "04",
         title: "Minimalist Portfolio",
         category: "Web / Design",
         year: "2026",
         description: "Redesign osobního portfolia se zaměřením na čistou typografii a vysoký výkon.",
         techs: ["Next.js", "TailwindCSS", "Framer Motion"],
         link: "https://github.com/PetrVorlos35/Portfolio",
-      },
-      {
-        num: "04",
-        title: "Budgeting app",
-        category: "Web / Design",
-        year: "2026",
-        description: "Nástroj na počítání peněz pro osobní účely a rozpočty výletů v Journeo.",
-        techs: ["Next.js", "TailwindCSS", "Framer Motion"],
-        link: "https://github.com/PetrVorlos35/budgetingapp",
-        live: "https://budget.vorlos.eu",
       },
     ]
   },
@@ -150,6 +151,18 @@ export const cs = {
         bullets: [
           { text: "UI/UX design analytických dashboardů ve Figmě navržený pro rychlé a bezchybné zadávání transakcí na mobilu." },
           { text: "Vývoj funkčního prototypu v Next.js, Reactu a Tailwind CSS s důrazem na přehlednou kategorizaci výdajů a čisté komponenty." },
+        ],
+      },
+      {
+        title: "Splitee",
+        subtitle: "Mobilní PWA pro dělení výdajů v partě v reálném čase",
+        link: "https://splitee.vorlos.eu",
+        linkLabel: "splitee.vorlos.eu",
+        caseStudySlug: "splitee",
+        bullets: [
+          { label: "Produkt & design systém", text: "Sepsaná produktová specifikace a vlastní design systém (metafora poštovní poukázky) navržený pro rychlé zadání výdaje jednou rukou." },
+          { label: "Realtime backend", text: "Next.js, TypeScript a Convex s přihlášením přes Google; tři režimy dělení, dluhy dohledatelné ke konkrétním podílům, vyrovnání na jedno ťuknutí a hosté, kteří si historii převezmou později." },
+          { label: "Správnost", text: "Částky jako celá čísla v haléřích s deterministickým rozdělením zbytků; 185 testů (Vitest, convex-test) nad doménovou logikou." },
         ],
       },
       {

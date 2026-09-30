@@ -14,6 +14,8 @@ export default function CaseStudyView({ slug }: { slug: string }) {
   // Hide the hero image gracefully if the screenshot asset is missing, so the
   // page never ships a broken image.
   const [heroFailed, setHeroFailed] = useState(false);
+  // Same for individual phone screenshots; the row disappears if none load.
+  const [failedScreens, setFailedScreens] = useState<string[]>([]);
 
   // Read the `?from=cv` query param client-side (rather than useSearchParams,
   // which would force this statically-generated page into dynamic rendering)
@@ -31,9 +33,11 @@ export default function CaseStudyView({ slug }: { slug: string }) {
   const study = caseStudies[slug];
   const c = study[language];
 
-  // The other case study, for the "next" link at the bottom.
-  const otherSlug = Object.keys(caseStudies).find((s) => s !== slug);
-  const other = otherSlug ? caseStudies[otherSlug] : null;
+  // The next case study in order (wrapping around), for the link at the bottom.
+  const slugs = Object.keys(caseStudies);
+  const nextSlug = slugs[(slugs.indexOf(slug) + 1) % slugs.length];
+  const other = nextSlug !== slug ? caseStudies[nextSlug] : null;
+  const screens = (study.screens ?? []).filter((src) => !failedScreens.includes(src));
 
   // Highlight the section currently in view in the side table of contents.
   const [activeSection, setActiveSection] = useState(0);
@@ -149,6 +153,26 @@ export default function CaseStudyView({ slug }: { slug: string }) {
             onError={() => setHeroFailed(true)}
             className="mt-14 w-full h-auto rounded-xl border border-gray-200 shadow-sm"
           />
+        )}
+
+        {/* Phone screenshots for mobile-first projects. A swipeable row on
+            small screens (contained, so the page itself never scrolls
+            sideways), a plain grid from md up. */}
+        {screens.length > 0 && (
+          <div className="mt-14 -mx-6 md:mx-0 px-6 md:px-0 flex md:grid md:grid-cols-3 gap-4 md:gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory scroll-px-6 pb-2 md:pb-0">
+            {screens.map((src, i) => (
+              <img
+                key={src}
+                src={src}
+                alt={`${c.title}: ${t.caseStudy.screenshotAlt} (${i + 1}/${screens.length})`}
+                width={924}
+                height={2000}
+                loading={i === 0 ? "eager" : "lazy"}
+                onError={() => setFailedScreens((prev) => [...prev, src])}
+                className="w-[64%] sm:w-[42%] md:w-full shrink-0 snap-start h-auto rounded-[1.75rem] border border-gray-200 shadow-sm"
+              />
+            ))}
+          </div>
         )}
 
         <div className="divider my-16" />
