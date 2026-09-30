@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import { Analytics } from "@vercel/analytics/react";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { ACCENT_BOOT_SCRIPT } from "@/lib/accent";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -51,7 +52,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="cs" className={dmSans.variable}>
+    // suppressHydrationWarning: the accent boot script may set inline CSS
+    // variables on <html> before React hydrates.
+    <html lang="cs" className={dmSans.variable} suppressHydrationWarning>
+      <head>
+        {/* Apply a visitor's stored accent before first paint. */}
+        <script dangerouslySetInnerHTML={{ __html: ACCENT_BOOT_SCRIPT }} />
+      </head>
       <body className={`${dmSans.className} bg-white text-black antialiased w-full overflow-x-hidden`}>
         <LanguageProvider>
           <a href="#home" className="skip-link">Skip to content</a>

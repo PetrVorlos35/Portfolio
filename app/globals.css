@@ -11,6 +11,22 @@
 
 html {
   scroll-behavior: smooth;
+  /* Visitors can recolor the accent (components/AccentTuner.tsx); the
+     registered properties below let the whole site blend into the new color. */
+  transition:
+    --color-accent 0.5s ease,
+    --color-accent-ink 0.5s ease;
+}
+
+@property --color-accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: oklch(0.58 0.19 258);
+}
+@property --color-accent-ink {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: oklch(0.48 0.18 262);
 }
 
 html,
@@ -71,12 +87,12 @@ body::before {
   border-radius: 99px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #9ca3af;
+  background: var(--color-accent);
 }
 
 /* --- SELECTION --- */
 ::selection {
-  background: #0a0a0a;
+  background: var(--color-accent-ink);
   color: #ffffff;
 }
 
@@ -112,6 +128,19 @@ body::before {
   background: #e5e7eb;
 }
 
+/* --- SECTION LABEL --- */
+/* A short accent rule before each section label, echoing the line under the
+   hero name. */
+.label-accent::before {
+  content: "";
+  display: inline-block;
+  width: 1rem;
+  height: 1px;
+  margin-right: 0.625rem;
+  vertical-align: middle;
+  background: var(--color-accent);
+}
+
 /* --- LINK HOVER UNDERLINE --- */
 .link-hover {
   position: relative;
@@ -124,7 +153,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 1px;
-  background: currentColor;
+  background: var(--color-accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
@@ -138,10 +167,11 @@ body::before {
 /* --- PROJECT ROW HOVER --- */
 .project-row {
   border-top: 1px solid #e5e7eb;
-  transition: background-color 0.2s ease;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
 }
 .project-row:hover {
-  background-color: #f9fafb;
+  background-color: color-mix(in oklch, var(--color-accent) 4%, #ffffff);
+  border-top-color: color-mix(in oklch, var(--color-accent) 45%, #e5e7eb);
 }
 .project-row:last-child {
   border-bottom: 1px solid #e5e7eb;
@@ -169,4 +199,33 @@ body::before {
     transition-duration: 0.01ms !important;
     transition-delay: 0ms !important;
   }
+}
+
+/* --- COLOR SLIDERS (AccentTuner) --- */
+/* The track paints a preview of the color along that axis (--track). */
+.color-range {
+  appearance: none;
+  width: 100%;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--track);
+  box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.06);
+  cursor: pointer;
+}
+.color-range::-webkit-slider-thumb {
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid #0a0a0a;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
+}
+.color-range::-moz-range-thumb {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 2px solid #0a0a0a;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.2);
 }

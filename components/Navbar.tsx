@@ -101,7 +101,7 @@ export default function Navbar() {
             onClick={() => scrollToSection("home")} 
             className="text-lg font-medium text-black active:scale-[0.98] transition-transform"
           >
-            PV.
+            PV<span className="text-accent">.</span>
           </button>
 
           {/* Desktop Links */}
@@ -112,7 +112,7 @@ export default function Navbar() {
                 onClick={() => scrollToSection(link.id)}
                 aria-current={effectiveActive === link.id ? "true" : undefined}
                 className={`text-sm transition-colors active:scale-[0.98] ${
-                  effectiveActive === link.id ? "text-accent-ink font-medium" : "text-gray-500 hover:text-black"
+                  effectiveActive === link.id ? "text-accent-ink font-medium" : "text-gray-500 hover:text-accent-ink"
                 }`}
               >
                 {link.name}
@@ -123,7 +123,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-6">
             <button
               onClick={() => setLanguage(language === "cs" ? "en" : "cs")}
-              className="text-xs font-mono text-gray-500 hover:text-black transition-colors active:scale-[0.95]"
+              className="text-xs font-mono text-gray-500 hover:text-accent-ink transition-colors active:scale-[0.95]"
               aria-label={language === "cs" ? "Switch to English" : "Přepnout do češtiny"}
             >
               {language === "cs" ? "EN" : "CS"}
@@ -132,7 +132,7 @@ export default function Navbar() {
               href="https://github.com/PetrVorlos35"
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-1.5 text-sm text-gray-600 hover:text-black transition-colors"
+              className="group flex items-center gap-1.5 text-sm text-gray-600 hover:text-accent-ink transition-colors"
             >
               GitHub
               <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">

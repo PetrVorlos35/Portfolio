@@ -19,7 +19,7 @@ export default function FeaturedProjects() {
       {/* Section header */}
       <div className="flex items-end justify-between gap-6 mb-12 md:mb-16">
         <div>
-          <p className="text-sm font-mono text-gray-500 mb-3">{t.projects.label}</p>
+          <p className="label-accent text-sm font-mono text-gray-500 mb-3">{t.projects.label}</p>
           <h2 className="display-sm font-light text-black max-w-[16ch]">{t.projects.title}</h2>
         </div>
         <p className="hidden md:block text-sm text-gray-500 shrink-0">

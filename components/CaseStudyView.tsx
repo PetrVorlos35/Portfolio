@@ -66,7 +66,7 @@ export default function CaseStudyView({ slug }: { slug: string }) {
             href={`#s-${i}`}
             aria-current={activeSection === i ? "true" : undefined}
             className={`group flex items-center gap-2.5 text-xs transition-colors ${
-              activeSection === i ? "text-accent-ink" : "text-gray-500 hover:text-black"
+              activeSection === i ? "text-accent-ink" : "text-gray-500 hover:text-accent-ink"
             }`}
           >
             <span
@@ -86,7 +86,7 @@ export default function CaseStudyView({ slug }: { slug: string }) {
             instead of dropping a recruiter back into the general portfolio. */}
         <Link
           href={fromCV ? "/cv" : "/#projects"}
-          className="group inline-flex items-center gap-2 text-sm text-gray-500 hover:text-black transition-colors mb-12"
+          className="group inline-flex items-center gap-2 text-sm text-gray-500 hover:text-accent-ink transition-colors mb-12"
         >
           <span className="transition-transform duration-300 group-hover:-translate-x-1">
             <ArrowIcon size={13} className="rotate-[225deg]" />
@@ -97,7 +97,7 @@ export default function CaseStudyView({ slug }: { slug: string }) {
         {/* Header rendered static (no reveal) so the most important content is
             present immediately and the page doesn't open on a uniform fade. */}
         <header>
-          <p className="text-[11px] text-gray-500 uppercase tracking-widest mb-5">
+          <p className="label-accent text-[11px] text-gray-500 uppercase tracking-widest mb-5">
             {c.category} · {study.year}
           </p>
           <h1 className="display font-light text-black mb-8">{c.title}</h1>

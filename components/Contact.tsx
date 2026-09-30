@@ -30,7 +30,7 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
       <div className={`divider ${compact ? "mb-12" : "mb-20"}`} />
 
       <motion.div {...reveal()}>
-        <p className="text-sm font-mono text-gray-500 mb-8">{t.contact.label}</p>
+        <p className="label-accent text-sm font-mono text-gray-500 mb-8">{t.contact.label}</p>
 
         {compact ? (
           <h2 className="display-sm font-light text-black mb-10">{t.contact.compactTitle}</h2>
@@ -79,7 +79,7 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="text-sm text-gray-500 font-mono group-hover:text-black transition-colors md:mt-1"
+                    className="text-sm text-gray-500 font-mono group-hover:text-accent-ink transition-colors md:mt-1"
                   >
                     {t.contact.copy}
                   </motion.span>
@@ -95,7 +95,7 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
             href="https://github.com/PetrVorlos35"
             target="_blank"
             rel="noopener noreferrer"
-            className="group text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1.5 whitespace-nowrap"
+            className="group text-sm text-gray-500 hover:text-accent-ink transition-colors flex items-center gap-1.5 whitespace-nowrap"
           >
             GitHub
             <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -106,7 +106,7 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
             href="https://www.linkedin.com/in/petr-vorlicek"
             target="_blank"
             rel="noopener noreferrer"
-            className="group text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1.5 whitespace-nowrap"
+            className="group text-sm text-gray-500 hover:text-accent-ink transition-colors flex items-center gap-1.5 whitespace-nowrap"
           >
             LinkedIn
             <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
@@ -117,7 +117,7 @@ export default function Contact({ compact = false }: { compact?: boolean }) {
             href="https://instagram.com/petr.vorel35"
             target="_blank"
             rel="noopener noreferrer"
-            className="group text-sm text-gray-500 hover:text-black transition-colors flex items-center gap-1.5 whitespace-nowrap"
+            className="group text-sm text-gray-500 hover:text-accent-ink transition-colors flex items-center gap-1.5 whitespace-nowrap"
           >
             Instagram
             <span className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">

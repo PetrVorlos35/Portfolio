@@ -35,7 +35,7 @@ export default function CVView() {
         {/* Back link — not actionable on a printed page */}
         <Link
           href="/"
-          className="group inline-flex items-center gap-2 text-sm text-gray-500 hover:text-black transition-colors mb-12 print:hidden"
+          className="group inline-flex items-center gap-2 text-sm text-gray-500 hover:text-accent-ink transition-colors mb-12 print:hidden"
         >
           <span className="transition-transform duration-300 group-hover:-translate-x-1">
             <ArrowIcon size={13} className="rotate-[225deg]" />
@@ -47,18 +47,18 @@ export default function CVView() {
             who this is, availability, and the download CTA — is present the
             instant a recruiter's link opens, not after a fade-in. */}
         <header>
-          <p className="text-[11px] text-gray-500 uppercase tracking-widest mb-5">{t.cv.label}</p>
+          <p className="label-accent text-[11px] text-gray-500 uppercase tracking-widest mb-5">{t.cv.label}</p>
           <h1 className="display font-light text-black mb-3">Petr Vorlíček</h1>
           <p className="text-xl md:text-2xl text-gray-600 mb-5">{t.cv.role}</p>
 
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-gray-500 mb-8">
             <span>{t.hero.location}</span>
             <span aria-hidden>·</span>
-            <a href={`tel:${PHONE.replace(/\s/g, "")}`} className="hover:text-black transition-colors">
+            <a href={`tel:${PHONE.replace(/\s/g, "")}`} className="hover:text-accent-ink transition-colors">
               {PHONE}
             </a>
             <span aria-hidden>·</span>
-            <a href={`mailto:${EMAIL}`} className="hover:text-black transition-colors">
+            <a href={`mailto:${EMAIL}`} className="hover:text-accent-ink transition-colors">
               {EMAIL}
             </a>
           </div>
@@ -99,7 +99,7 @@ export default function CVView() {
 
         {/* Skills */}
         <motion.section {...reveal(0.1)} className="mt-20">
-          <p className="text-xs text-gray-500 uppercase tracking-widest mb-8">{t.cv.skillsLabel}</p>
+          <p className="label-accent text-xs text-gray-500 uppercase tracking-widest mb-8">{t.cv.skillsLabel}</p>
           <div className="space-y-6">
             {skills.map((group) => (
               <div key={group.label}>
@@ -121,7 +121,7 @@ export default function CVView() {
 
         {/* Education */}
         <motion.section {...reveal(0.15)} className="mt-20">
-          <p className="text-xs text-gray-500 uppercase tracking-widest mb-8">{t.cv.education}</p>
+          <p className="label-accent text-xs text-gray-500 uppercase tracking-widest mb-8">{t.cv.education}</p>
           <div className="relative pl-4 md:pl-6 border-l border-gray-200 ml-2">
             {education.map((item) => (
               <div key={item.title} className="relative flex gap-5 py-6 group">
@@ -146,7 +146,7 @@ export default function CVView() {
         {/* Selected projects — mirrors the curated write-up from the CV, not
             the full project list shown on the homepage. */}
         <motion.section {...reveal(0.2)} className="mt-20">
-          <p className="text-xs text-gray-500 uppercase tracking-widest mb-8">{t.projects.label}</p>
+          <p className="label-accent text-xs text-gray-500 uppercase tracking-widest mb-8">{t.projects.label}</p>
           <div className="space-y-12">
             {t.cv.projects.map((project) => (
               <div key={project.title}>
@@ -178,7 +178,7 @@ export default function CVView() {
                 <ul className="space-y-2">
                   {project.bullets.map((bullet, i) => (
                     <li key={i} className="text-sm text-gray-600 leading-relaxed flex gap-2.5">
-                      <span className="text-gray-300 mt-[3px] shrink-0" aria-hidden>
+                      <span className="text-accent mt-[3px] shrink-0" aria-hidden>
                         —
                       </span>
                       <span>

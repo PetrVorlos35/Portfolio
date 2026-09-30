@@ -14,7 +14,7 @@ export default function About() {
       <div className="divider mb-20" />
 
       <motion.div {...reveal()} className="max-w-2xl">
-        <p className="text-sm font-mono text-gray-500 mb-8">{t.about.label}</p>
+        <p className="label-accent text-sm font-mono text-gray-500 mb-8">{t.about.label}</p>
         <h2 className="display-sm font-light text-black mb-10">{t.about.title}</h2>
         <p className="text-gray-600 leading-relaxed mb-6 text-base max-w-prose">
           {t.about.bio1}
