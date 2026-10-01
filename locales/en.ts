@@ -161,8 +161,8 @@ export const en = {
         caseStudySlug: "splitee",
         bullets: [
           { label: "Product & design system", text: "Wrote the product spec and a custom design system (a postal money-order form metaphor), built for fast one-handed expense entry." },
-          { label: "Realtime backend", text: "Next.js, TypeScript and Convex with Google sign-in; three split modes, debts traced to concrete shares, one-tap settle-up, and guests who can claim their history later." },
-          { label: "Correctness", text: "Money stored as integer cents with deterministic remainder handling; 185 tests (Vitest, convex-test) across the domain logic." },
+          { label: "Realtime backend", text: "Next.js, TypeScript and Convex with Google sign-in; three split modes, debts simplified to the fewest transfers, one-tap settle-up, and guests who can claim their history later." },
+          { label: "Correctness", text: "Money stored as integer cents with deterministic remainder handling; 175 tests (Vitest, convex-test) across the domain logic." },
         ],
       },
       {

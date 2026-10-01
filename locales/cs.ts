@@ -161,8 +161,8 @@ export const cs = {
         caseStudySlug: "splitee",
         bullets: [
           { label: "Produkt & design systém", text: "Sepsaná produktová specifikace a vlastní design systém (metafora poštovní poukázky) navržený pro rychlé zadání výdaje jednou rukou." },
-          { label: "Realtime backend", text: "Next.js, TypeScript a Convex s přihlášením přes Google; tři režimy dělení, dluhy dohledatelné ke konkrétním podílům, vyrovnání na jedno ťuknutí a hosté, kteří si historii převezmou později." },
-          { label: "Správnost", text: "Částky jako celá čísla v haléřích s deterministickým rozdělením zbytků; 185 testů (Vitest, convex-test) nad doménovou logikou." },
+          { label: "Realtime backend", text: "Next.js, TypeScript a Convex s přihlášením přes Google; tři režimy dělení, dluhy zjednodušené na co nejméně převodů, vyrovnání na jedno ťuknutí a hosté, kteří si historii převezmou později." },
+          { label: "Správnost", text: "Částky jako celá čísla v haléřích s deterministickým rozdělením zbytků; 175 testů (Vitest, convex-test) nad doménovou logikou." },
         ],
       },
       {

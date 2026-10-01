@@ -293,7 +293,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       stack: [
         { label: "Frontend", items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Motion", "PWA"] },
         { label: "Backend", items: ["Convex", "Convex Auth", "Google OAuth", "Realtime queries"] },
-        { label: "Quality", items: ["Vitest", "convex-test", "185 tests"] },
+        { label: "Quality", items: ["Vitest", "convex-test", "175 tests"] },
         { label: "Infra", items: ["Vercel", "next/og"] },
       ],
       sections: [
@@ -312,8 +312,8 @@ export const caseStudies: Record<string, CaseStudy> = {
           bullets: [
             "Groups with a name, emoji and currency, joined by a 6-character invite code, a link or a QR code, with a server-enforced limit of ten members",
             "Expenses with three split modes: equally, by exact amounts, or by shares (e.g. room size or nights stayed)",
-            "Debts calculated from concrete unsettled shares, so every “you owe” can be traced back to the expenses behind it; mutual debts cancel out",
-            "Settling a single share or everything with one person in one tap, and undoing a settlement if it was a mistake",
+            "Debts simplified to the fewest possible transfers: everyone's balance is netted out first, so you might pay someone you never shared a bill with, and the group settles up in a handful of payments instead of a tangle of small ones",
+            "Marking a transfer as paid in one tap, with payments showing up in the expense history and the option to undo one if it was a mistake",
             "Guests: add friends without an account and log for them from minute one; when they sign in later, they claim their guest along with the full history",
             "Google sign-in, then a nickname and a personal colour that stays unique within the group and carries the person's identity across the UI",
             "Realtime sync: an expense logged by one person shows up for everyone instantly",
@@ -328,12 +328,13 @@ export const caseStudies: Record<string, CaseStudy> = {
         {
           heading: "Tech & why",
           body:
-            "Realtime is part of the product, not an optimisation: a group logs expenses at the same time and the balance has to be right immediately, so the backend is Convex with reactive queries and no polling code. All amounts are stored as integers in the smallest currency unit and formatted only in the display layer. Permissions are checked on the server in every mutation, never just in the UI, and errors travel as codes that the client translates. The whole domain layer (splitting, debts, settlements, guests, invites) is covered by 185 tests in Vitest and convex-test.",
+            "Realtime is part of the product, not an optimisation: a group logs expenses at the same time and the balance has to be right immediately, so the backend is Convex with reactive queries and no polling code. All amounts are stored as integers in the smallest currency unit and formatted only in the display layer. Permissions are checked on the server in every mutation, never just in the UI, and errors travel as codes that the client translates. The whole domain layer (splitting, debts, settlements, guests, invites) is covered by 175 tests in Vitest and convex-test.",
         },
         {
           heading: "Hardest part",
           bullets: [
             "Splitting without losing a cent: 100 split three ways doesn't divide evenly. Leftover cents go deterministically by join order, and share-based splits use the largest-remainder method, so the parts always add up exactly to the expense.",
+            "Settling up in as few transfers as possible: finding the true minimum is NP-hard, so the algorithm first pairs people whose debt and credit match exactly (one payment clears two people), then greedily matches the largest debtor with the largest creditor. For n people with a non-zero balance it never needs more than n − 1 transfers, it's exact to the cent, and the same input always yields the same transfers, so the list doesn't jump around between renders.",
             "Taking over a guest: when someone signs up, their guest identity is swapped for the real account across every expense, share and settlement in one transaction, without ever merging two people into one.",
             "Hardening the input: code review turned up that an infinite weight could slip NaN values into the database silently, so weights now have explicit bounds and edge cases like this are pinned down by tests.",
           ],
@@ -354,7 +355,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       stack: [
         { label: "Frontend", items: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Motion", "PWA"] },
         { label: "Backend", items: ["Convex", "Convex Auth", "Google OAuth", "Realtime dotazy"] },
-        { label: "Kvalita", items: ["Vitest", "convex-test", "185 testů"] },
+        { label: "Kvalita", items: ["Vitest", "convex-test", "175 testů"] },
         { label: "Infra", items: ["Vercel", "next/og"] },
       ],
       sections: [
@@ -373,8 +374,8 @@ export const caseStudies: Record<string, CaseStudy> = {
           bullets: [
             "Party s názvem, emoji a měnou, připojení šestiznakovým kódem, odkazem nebo QR, s limitem deseti členů vynuceným na serveru",
             "Výdaje se třemi režimy dělení: rovným dílem, přesnými částkami nebo poměrem (třeba podle velikosti pokoje nebo počtu nocí)",
-            "Dluhy počítané z konkrétních nevyrovnaných podílů, takže u každého „dlužíš“ jde dohledat, za co; vzájemné dluhy se započítají",
-            "Vyrovnání jednoho podílu nebo všeho s jedním člověkem na jedno ťuknutí a možnost vyrovnání zrušit, když se někdo splete",
+            "Dluhy zjednodušené na co nejmenší počet převodů: nejdřív se spočítá čistá bilance každého, takže klidně pošleš peníze někomu, s kým jsi nikdy nic neplatil, a parta se vyrovná pár platbami místo spleti drobných",
+            "Označení převodu jako zaplaceného na jedno ťuknutí, platby se propíšou do historie výdajů a když se někdo splete, jde vyrovnání zrušit",
             "Hosté: přidáš kamaráda bez účtu a zapisuješ za něj od první minuty; když se později přihlásí, převezme si svého hosta i s celou historií",
             "Přihlášení přes Google, pak přezdívka a osobní barva, která je v partě unikátní a nese identitu člověka napříč rozhraním",
             "Realtime synchronizace: výdaj, který zapíše jeden, se všem propíše okamžitě",
@@ -389,12 +390,13 @@ export const caseStudies: Record<string, CaseStudy> = {
         {
           heading: "Technologie a proč",
           body:
-            "Realtime je součást produktu, ne optimalizace: parta zapisuje výdaje současně a bilance musí sedět hned, proto backend běží na Convexu s reaktivními dotazy a bez jediného řádku pollingu. Všechny částky se ukládají jako celá čísla v haléřích a formátují se až v zobrazovací vrstvě. Oprávnění se kontrolují na serveru v každé mutaci, nikdy jen v UI, a chyby putují jako kódy, které si klient přeloží. Celou doménovou vrstvu (dělení, dluhy, vyrovnání, hosty, pozvánky) pokrývá 185 testů ve Vitestu a convex-test.",
+            "Realtime je součást produktu, ne optimalizace: parta zapisuje výdaje současně a bilance musí sedět hned, proto backend běží na Convexu s reaktivními dotazy a bez jediného řádku pollingu. Všechny částky se ukládají jako celá čísla v haléřích a formátují se až v zobrazovací vrstvě. Oprávnění se kontrolují na serveru v každé mutaci, nikdy jen v UI, a chyby putují jako kódy, které si klient přeloží. Celou doménovou vrstvu (dělení, dluhy, vyrovnání, hosty, pozvánky) pokrývá 175 testů ve Vitestu a convex-test.",
         },
         {
           heading: "Nejtěžší část",
           bullets: [
             "Dělení bez ztráty haléře: 100 Kč na tři se beze zbytku nedělí. Zbytkové haléře dostávají deterministicky první podle pořadí vstupu do party a poměrové dělení používá metodu největšího zbytku, takže podíly vždy dají přesně částku výdaje.",
+            "Vyrovnání na co nejméně převodů: najít skutečné minimum je NP-těžké, takže algoritmus nejdřív spáruje lidi, jejichž dluh a pohledávka sedí přesně (jeden převod vyřeší dva lidi naráz), a zbytek hladově: největší dlužník platí největšímu věřiteli. Pro n lidí s nenulovou bilancí stačí vždy nejvýš n − 1 převodů, sedí to na haléř a stejný vstup dá vždy stejné převody, aby seznam mezi překresleními neposkakoval.",
             "Převzetí hosta: když se člověk zaregistruje, jeho host se v jedné transakci nahradí skutečným účtem napříč všemi výdaji, podíly a vyrovnáními, aniž by se dva lidé kdy sloučili do jednoho.",
             "Odolnost vstupů: code review odhalilo, že nekonečná váha dokázala potichu zapsat do databáze NaN, takže váhy mají teď pevné meze a podobné okrajové případy hlídají testy.",
           ],
