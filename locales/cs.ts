@@ -187,5 +187,6 @@ export const cs = {
     screenshotAlt: "rozhraní aplikace",
     onThisPage: "Na této stránce",
     newTab: "(otevře se v novém okně)",
+    moreCaseStudies: "Další případové studie",
   },
 };

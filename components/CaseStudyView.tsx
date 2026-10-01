@@ -33,10 +33,13 @@ export default function CaseStudyView({ slug }: { slug: string }) {
   const study = caseStudies[slug];
   const c = study[language];
 
-  // The next case study in order (wrapping around), for the link at the bottom.
+  // All other case studies for the links at the bottom, starting with the next
+  // one in order (wrapping around), so new entries show up automatically.
   const slugs = Object.keys(caseStudies);
-  const nextSlug = slugs[(slugs.indexOf(slug) + 1) % slugs.length];
-  const other = nextSlug !== slug ? caseStudies[nextSlug] : null;
+  const index = slugs.indexOf(slug);
+  const others = [...slugs.slice(index + 1), ...slugs.slice(0, index)].map(
+    (s) => caseStudies[s]
+  );
   const screens = (study.screens ?? []).filter((src) => !failedScreens.includes(src));
 
   // Highlight the section currently in view in the side table of contents.
@@ -241,27 +244,36 @@ export default function CaseStudyView({ slug }: { slug: string }) {
           ))}
         </div>
 
-        {/* Next case study */}
-        {other && (
-          <>
+        {/* Other case studies */}
+        {others.length > 0 && (
+          <nav aria-label={t.caseStudy.moreCaseStudies}>
             <div className="divider mt-20 mb-10" />
-            <Link
-              href={`/projects/${other.slug}`}
-              className="group flex items-center justify-between gap-4 py-4"
-            >
-              <div>
-                <p className="text-[11px] text-gray-500 uppercase tracking-[0.2em] mb-2">
-                  {t.projects.caseStudy}
-                </p>
-                <p className="text-2xl md:text-3xl font-light text-black transition-all duration-300 group-hover:text-accent-ink group-hover:translate-x-1 group-focus-visible:text-accent-ink group-focus-visible:translate-x-1">
-                  {other[language].title}
-                </p>
-              </div>
-              <span className="text-gray-400 transition-colors group-hover:text-accent-ink group-focus-visible:text-accent-ink">
-                <ArrowIcon size={18} />
-              </span>
-            </Link>
-          </>
+            <p className="text-[11px] text-gray-500 uppercase tracking-[0.2em] mb-4">
+              {t.caseStudy.moreCaseStudies}
+            </p>
+            <ul className="divide-y divide-gray-200">
+              {others.map((other) => (
+                <li key={other.slug}>
+                  <Link
+                    href={`/projects/${other.slug}`}
+                    className="group flex items-center justify-between gap-4 py-5"
+                  >
+                    <div>
+                      <p className="text-2xl md:text-3xl font-light text-black transition-all duration-300 group-hover:text-accent-ink group-hover:translate-x-1 group-focus-visible:text-accent-ink group-focus-visible:translate-x-1">
+                        {other[language].title}
+                      </p>
+                      <p className="mt-1 text-[11px] text-gray-500 uppercase tracking-[0.2em]">
+                        {other[language].category} · {other.year}
+                      </p>
+                    </div>
+                    <span className="text-gray-400 transition-colors group-hover:text-accent-ink group-focus-visible:text-accent-ink">
+                      <ArrowIcon size={18} />
+                    </span>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         )}
       </article>
 

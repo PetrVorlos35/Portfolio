@@ -187,5 +187,6 @@ export const en = {
     screenshotAlt: "product interface",
     onThisPage: "On this page",
     newTab: "(opens in a new tab)",
+    moreCaseStudies: "More case studies",
   },
 };
